@@ -1,6 +1,7 @@
 package com.orgName.genericUtility;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -17,7 +18,7 @@ public class File_utility
 		 * THROWS
 		 * @author Shivashankar 
 		 */
-		
+
 		//FileInputStream fis = new FileInputStream("./commondata.properties.txt");
 		FileInputStream fis = new FileInputStream("./Credentials.txt");
 		Properties pro = new Properties();
@@ -34,7 +35,7 @@ public class File_utility
 		 * THROWS
 		 * @author Shivashankar 
 		 */
-		
+
 		//FileInputStream fis = new FileInputStream("./commondata.properties.txt");
 		FileInputStream fis = new FileInputStream("./DoctorCredentials.txt");
 		Properties pro = new Properties();
@@ -51,13 +52,21 @@ public class File_utility
 		 * THROWS
 		 * @author Shivashankar 
 		 */
-		
+
 		//FileInputStream fis = new FileInputStream("./commondata.properties.txt");
 		FileInputStream fis = new FileInputStream("./Admin_credentials.txt");
 		Properties pro = new Properties();
 		pro.load(fis);
 		String value = pro.getProperty(key2);
 		return value;
+	}
+	public String toFillDcotorDetails(String key3) throws IOException
+	{
+		FileInputStream fis1 = new FileInputStream("./DoctorCredentials2.txt");
+		Properties pro = new Properties();
+		pro.load(fis1);
+		String name = pro.getProperty(key3);
+		return name;
 	}
 
 }

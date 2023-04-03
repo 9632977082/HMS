@@ -13,73 +13,93 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.Test;
 
+import com.appName.objectRepository.BookMyAppointment_page;
+import com.appName.objectRepository.DoctorLogin;
+import com.appName.objectRepository.HomePage;
+import com.appName.objectRepository.LoginPage;
+import com.appName.objectRepository.User_page;
+import com.orgName.genericUtility.BaseClass;
 import com.orgName.genericUtility.File_utility;
+import com.orgName.genericUtility.WebdriverUtility;
 
-public class BookAnAppointment 
+public class BookAnAppointment extends BaseClass
 {
-	public static void main(String[] args) throws IOException, InterruptedException 
-	{
-
 	
-		
+
+	@Test
+	public void BookAnAppointment() throws IOException, InterruptedException 
+	{
+             
+
+
+		WebdriverUtility wlib = new WebdriverUtility();
+
+
 		File_utility file = new File_utility();
 		String URl = file.Patient("url");
 		String UN = file.Patient("un");
 		String PW = file.Patient("pw");
-		
 
-		
+
+
 		String USER = file.Doctor("un");
 		String PWD = file.Doctor("pw");
 
-		System.setProperty("webdriver.chrome.driver", "./src/test/resources/chromedriver.exe");
-		WebDriver	driver=new ChromeDriver();
+		WebDriver driver=this.driver;
+	//	System.setProperty("webdriver.chrome.driver", "./src/test/resources/chromedriver.exe");
+	//	WebDriver	driver=new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get(URl);
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-		driver.findElement(By.xpath("//a[@href='hms/user-login.php']")).click();
-		driver.findElement(By.xpath("//input[@name='username']")).sendKeys(UN);
-		driver.findElement(By.xpath("//input[@name='password']")).sendKeys(PW);
-		driver.findElement(By.xpath("//button[@name='submit']")).click();
-		driver.findElement(By.xpath("//div[@class='container-fluid container-fullw bg-white']/descendant::div/div[3]/descendant::p")).click();
+		HomePage home = new HomePage(driver);
+		home.PatientModule();
+		LoginPage login = new LoginPage(driver);
+		login.Log_in(UN, PW);
 
-		WebElement ele = driver.findElement(By.xpath("//select[@name='Doctorspecialization']"));
-		Select s = new Select(ele);
-		s.selectByIndex(4);
+		User_page user = new User_page(driver);
+		user.Appointment();
+
+
+		BookMyAppointment_page special = new BookMyAppointment_page(driver);
+		WebElement ele = special.getSpecialization();
+
+		wlib.SelectSpecialization(ele, 4);	
+
+		WebElement ele1 = special.getDoctor();
+
+		wlib.SelectDoctor(ele1, 3);
+
+		special.PickDateInCalendar();
+
+
+		special.SetTime();
+
+		special.Submit();
+
+		wlib.AlertAccept(driver);
+
+		user.Logout();
+            
+		wlib.JavaScriptExecutorToScrollDown(driver);
+
+	   
+
+		Thread.sleep(2000);
+	
+		home.DoctorModule();
 		
-		WebElement ele1 = driver.findElement(By.xpath("//select[@name='doctor']"));
-		Select s1 = new Select(ele1);
-		s1.selectByIndex(4);
-    
-		driver.findElement(By.xpath("//input[@class='form-control datepicker']")).click();
-		driver.findElement(By.xpath("//div[@class='datepicker datepicker-dropdown dropdown-menu datepicker-orient-left datepicker-orient-bottom']/div/table/tbody/tr[5]/td[7]")).click();
-        driver.findElement(By.xpath("//input[@id='timepicker1']")).click();
-        driver.findElement(By.xpath("//div[@class='bootstrap-timepicker-widget dropdown-menu timepicker-orient-left timepicker-orient-bottom open']/table/tbody/tr[1]/td[1]")).click();
-        driver.findElement(By.xpath("//div[@class='bootstrap-timepicker-widget dropdown-menu timepicker-orient-left timepicker-orient-bottom open']/table/tbody/tr[3]")).click();
-        driver.findElement(By.xpath("//button[@type='submit']")).click();
-        
-        
-        Alert a = driver.switchTo().alert();
-        a.accept();
-        
-        driver.findElement(By.xpath("//a[@class='dropdown-toggle']/span")).click();
-        driver.findElement(By.xpath("//ul[@class='dropdown-menu dropdown-dark']/li[3]")).click();
-      
-        
-        JavascriptExecutor jse = (JavascriptExecutor)driver;
-       jse.executeScript("window.scrollBy(0,200)");
-       
-       Thread.sleep(2000);
-       
-       driver.findElement(By.xpath("//a[@href='hms/doctor/']")).click();
-       driver.findElement(By.xpath("//input[@name='username']")).sendKeys(USER);
-       driver.findElement(By.xpath("//input[@name='password']")).sendKeys(PWD);
-       driver.findElement(By.xpath("//button[@name='submit']")).click();
-       
-       driver.findElement(By.xpath("//p[@class='cl-effect-1']/a")).click();
-       driver.findElement(By.xpath("//a[@class='dropdown-toggle']")).click();
-       driver.findElement(By.xpath("//ul[@class='dropdown-menu dropdown-dark']/li[3]")).click();
+		DoctorLogin doc = new DoctorLogin(driver);
+		doc.DoctorsLogin(USER, PWD);
+	
+	//	driver.findElement(By.xpath("//input[@name='username']")).sendKeys(USER);
+	//	driver.findElement(By.xpath("//input[@name='password']")).sendKeys(PWD);
+	//	driver.findElement(By.xpath("//button[@name='submit']")).click();
+
+	//	driver.findElement(By.xpath("//p[@class='cl-effect-1']/a")).click();
+	//	driver.findElement(By.xpath("//a[@class='dropdown-toggle']")).click();
+	//	driver.findElement(By.xpath("//ul[@class='dropdown-menu dropdown-dark']/li[3]")).click();
 	}
 
 

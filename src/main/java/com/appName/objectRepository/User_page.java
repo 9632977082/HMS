@@ -15,7 +15,22 @@ public class User_page
 	private   WebElement  testGmailCom;
 	@FindBy(xpath = "//ul[@class='dropdown-menu dropdown-dark']/li[1]")
 	private       WebElement MyProfile;
-	
+	@FindBy(xpath = "//ul[@class='dropdown-menu dropdown-dark']/li[3]")
+	private WebElement  LogOut_patient;
+	@FindBy(xpath = "//div[@class='container-fluid container-fullw bg-white']/descendant::div/div[3]/descendant::p")
+	private  WebElement AppointMent;
+
+
+	public WebElement getLogOut_patient() 
+	{
+		return LogOut_patient;
+	}
+
+	public WebElement getAppointMent() 
+	{
+		return AppointMent;
+	}
+
 	public User_page(WebDriver driver)
 	{
 		this.driver=driver;
@@ -27,21 +42,30 @@ public class User_page
 		return driver;
 	}
 
-	public WebElement getTestGmailCom() {
+	public WebElement getTestGmailCom() 
+	{
 		return testGmailCom;
 	}
 
 	public WebElement getMyProfile() 
-	
+
 	{
 		return MyProfile;
 	}
-	
+
 	public void toClickOnMyProfile()
 	{
 		testGmailCom.click();
 		MyProfile.click();
 	}
-	
+	public void Logout()
+	{
+		testGmailCom.click();
+		LogOut_patient.click();
+	}
+	public void Appointment()
+	{
+		AppointMent.click();
+	}
 
 }
