@@ -37,7 +37,7 @@ public class File_utility
 		 */
 
 		//FileInputStream fis = new FileInputStream("./commondata.properties.txt");
-		FileInputStream fis = new FileInputStream("./DoctorCredentials.txt");
+		FileInputStream fis = new FileInputStream("./updatedDoctorCredentials.txt");
 		Properties pro = new Properties();
 		pro.load(fis);
 		String value = pro.getProperty(key1);

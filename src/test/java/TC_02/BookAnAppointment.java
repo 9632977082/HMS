@@ -65,11 +65,11 @@ public class BookAnAppointment extends BaseClass
 		BookMyAppointment_page special = new BookMyAppointment_page(driver);
 		WebElement ele = special.getSpecialization();
 
-		wlib.SelectSpecialization(ele, 4);	
+		wlib.SelectSpecialization(ele, 3);	
 
 		WebElement ele1 = special.getDoctor();
 
-		wlib.SelectDoctor(ele1, 3);
+		wlib.SelectDoctor(ele1, 0);
 
 		special.PickDateInCalendar();
 

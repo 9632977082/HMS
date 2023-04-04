@@ -17,11 +17,24 @@ public class Admin_page
 	private    WebElement	adminIcon;
 	@FindBy(xpath = "//ul[@class='dropdown-menu dropdown-dark']/li[2]")
 	private  WebElement admin_logout;
-	
-	
+	@FindBy(xpath = "//ul[@class='main-navigation-menu']/li[2]")
+	private  WebElement Doctors;
+	@FindBy(xpath = "//ul[@class='sub-menu']/li[2]/a/span[.=' Add Doctor']")
+	private  WebElement addDoctor;
+
 	public WebDriver getDriver() 
 	{
 		return driver;
+	}
+
+
+	public WebElement getDoctors() {
+		return Doctors;
+	}
+
+
+	public WebElement getAddDoctor() {
+		return addDoctor;
 	}
 
 
@@ -62,6 +75,11 @@ public class Admin_page
 	{
 		adminIcon.click();
 		admin_logout.click();
+	}
+	public void toCreateDoctor()
+	{
+		Doctors.click();
+		addDoctor.click();
 	}
 
 }

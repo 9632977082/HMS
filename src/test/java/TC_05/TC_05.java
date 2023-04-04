@@ -1,32 +1,31 @@
-package TC_03;
+package TC_05;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 
 import com.appName.objectRepository.AddDoctorPage;
 import com.appName.objectRepository.AdminLogin;
 import com.appName.objectRepository.Admin_page;
-import com.appName.objectRepository.DoctorLogin;
 import com.appName.objectRepository.HomePage;
 import com.orgName.genericUtility.BaseClass;
 import com.orgName.genericUtility.File_utility;
 import com.orgName.genericUtility.Java_lib;
 import com.orgName.genericUtility.WebdriverUtility;
 
-public class TC_03 extends BaseClass
+public class TC_05 extends BaseClass
 {
 	@Test
-	public void Tc_03() throws IOException
+	public void TC05() throws IOException
 	{
+		WebDriver driver=this.driver;
+		
 		WebdriverUtility wlib = new WebdriverUtility();
 		Java_lib jlib = new Java_lib();
-		WebDriver driver=this.driver;
+		
 		File_utility file = new File_utility();
 		String URl = file.Patient("url");
 		String UN = file.Patient("un");
@@ -77,17 +76,6 @@ public class TC_03 extends BaseClass
 		wlib.AlertAccept(driver);
 
 		
-		admin.AdminLogout();
-		
-		home.DoctorModule();
-
-		String Duser = file.Doctor("un");
-		String Dpw = file.Doctor("pw");
-
-		DoctorLogin login1 = new DoctorLogin(driver);
-		login1.DoctorsLogin(Duser, Dpw);
-		driver.close();
-
 	}
 
 }
