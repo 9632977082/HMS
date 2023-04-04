@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2023-04-04T14:47:56 IST" name="Default suite" finished-at="2023-04-04T14:48:41 IST" duration-ms="45580">
+    <groups>
+    </groups>
+    <test started-at="2023-04-04T14:47:56 IST" name="Default test" finished-at="2023-04-04T14:48:41 IST" duration-ms="45580">
+      <class name="com.appName.domainName.Test07">
+        <test-method is-config="true" signature="testSetUp()[pri:0, instance:com.appName.domainName.Test07@21e360a]" started-at="2023-04-04T14:47:56 IST" name="testSetUp" finished-at="2023-04-04T14:47:56 IST" duration-ms="795" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testSetUp -->
+        <test-method is-config="true" signature="beforeClass1Test()[pri:0, instance:com.appName.domainName.Test07@21e360a]" started-at="2023-04-04T14:47:56 IST" name="beforeClass1Test" finished-at="2023-04-04T14:48:06 IST" duration-ms="9210" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeClass1Test -->
+        <test-method is-config="true" signature="beforeMethod1Test(java.lang.reflect.Method)[pri:0, instance:com.appName.domainName.Test07@21e360a]" started-at="2023-04-04T14:48:06 IST" name="beforeMethod1Test" finished-at="2023-04-04T14:48:06 IST" duration-ms="4" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void com.appName.domainName.Test07.test06() throws java.lang.Throwable]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod1Test -->
+        <test-method signature="test06()[pri:0, instance:com.appName.domainName.Test07@21e360a]" started-at="2023-04-04T14:48:06 IST" name="test06" finished-at="2023-04-04T14:48:39 IST" duration-ms="33760" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test06 -->
+        <test-method is-config="true" signature="afterMethod1Test(org.testng.ITestResult)[pri:0, instance:com.appName.domainName.Test07@21e360a]" started-at="2023-04-04T14:48:39 IST" name="afterMethod1Test" finished-at="2023-04-04T14:48:39 IST" duration-ms="2" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=test06 status=SUCCESS method=Test07.test06()[pri:0, instance:com.appName.domainName.Test07@21e360a] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod1Test -->
+        <test-method is-config="true" signature="afterCass1Test()[pri:0, instance:com.appName.domainName.Test07@21e360a]" started-at="2023-04-04T14:48:39 IST" name="afterCass1Test" finished-at="2023-04-04T14:48:41 IST" duration-ms="1680" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterCass1Test -->
+        <test-method is-config="true" signature="aftersuite1Test()[pri:0, instance:com.appName.domainName.Test07@21e360a]" started-at="2023-04-04T14:48:41 IST" name="aftersuite1Test" finished-at="2023-04-04T14:48:42 IST" duration-ms="1223" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- aftersuite1Test -->
+      </class> <!-- com.appName.domainName.Test07 -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

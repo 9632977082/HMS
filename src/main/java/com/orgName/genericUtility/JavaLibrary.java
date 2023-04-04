@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.WebElement;
 
 /**
@@ -37,6 +38,13 @@ public class JavaLibrary {
 		 int ran = new Random().nextInt(limit);
 		 UtilityClass.getTest().info("Random Number Generated Successfully");
 		return ran;
+	}
+	
+	
+	public String getRandomAlphabet() {
+		String alpha = RandomStringUtils.randomAlphabetic(3);
+		
+		return alpha;
 	}
 	
 	/**

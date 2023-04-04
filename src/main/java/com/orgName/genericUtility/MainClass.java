@@ -27,10 +27,10 @@ import com.aventstack.extentreports.reporter.configuration.Theme;
  */
 public class MainClass {
 
-	private static String username;
-	private static String password;
-	protected LoginPage loginPage;
-	protected HomePage homePage;
+//	private static String username;
+//	private static String password;
+//	protected LoginPage loginPage;
+//	protected HomePage homePage;
 	private ExtentReports report;
 	private ExtentTest test;
 	
@@ -47,7 +47,7 @@ public class MainClass {
 		report.attachReporter(spark);
 		
 		report.setSystemInfo("Envirnoment", "Testing Envirnoment");
-		report.setSystemInfo("Reporter Name", "MOHAN GOWDA");
+		report.setSystemInfo("Reporter Name", "B G Arunkumar");
 		report.setSystemInfo("Platform", "Windows 10");
 		report.setSystemInfo("Unit testing tool", "TESTNG");
 		report.setSystemInfo("Build Management Tool", "Maven");
@@ -81,8 +81,8 @@ public class MainClass {
 		Map<String, String> commonData = UtilityClass.getExcelLibrary().getCommonData();
 		String url = commonData.get("url");
 		String timeout = commonData.get("timeout");
-		username = commonData.get("userName");
-		password = commonData.get("password");
+//		username = commonData.get("userName");
+//		password = commonData.get("password");
 		String browser = commonData.get("browser");
 		UtilityClass.setTimeout(JavaLibrary.stringToLong(timeout));
 		UtilityClass.setRandomNumber(JavaLibrary.getRandomNumber(1000));
@@ -97,8 +97,8 @@ public class MainClass {
 		SeleniumActions.explicitlyWait(UtilityClass.getTimeout());
 
 		//create the instance for common object repository class
-		loginPage = new LoginPage();
-		homePage = new HomePage();
+//		loginPage = new LoginPage();
+//		homePage = new HomePage();
 
 	}
 
@@ -112,8 +112,8 @@ public class MainClass {
 	public void beforeMethod1Test(Method mtd) {
 		 test = report.createTest(mtd.getName());
 		 UtilityClass.setTest(test);
-		//open database if it is required
-		loginPage.loginAction(username, password);
+//		//open database if it is required
+//		loginPage.loginAction(username, password);
 	}
 
 	/**
@@ -144,8 +144,8 @@ public class MainClass {
      		test.log(Status.SKIP, result.getThrowable());
      	}
 		//signout action
-		homePage.signout();
-		UtilityClass.getExcelLibrary().saveExcelData(FilePath.EXCELFILEPATH);
+//		homePage.signout();
+//		UtilityClass.getExcelLibrary().saveExcelData(FilePath.EXCELFILEPATH);
 
 
 	}

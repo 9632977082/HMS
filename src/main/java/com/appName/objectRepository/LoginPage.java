@@ -9,17 +9,15 @@ import com.orgName.genericUtility.UtilityClass;
 public final class LoginPage {
 
 	
-	@FindBy(name = "user_name")
+	@FindBy(name="username")
 	private  WebElement userNameTxt;
 	
-	@FindBy(name="user_password" )
+	@FindBy(name="password" )
 	private   WebElement passwordTxt;
 	
-	@FindBy(id = "submitButton" )
+	@FindBy(name="submit")
 	private  WebElement loginBtn;
 		
-	
-
 	public LoginPage() {
 		PageFactory.initElements(UtilityClass.getDriver(), this);
 	}

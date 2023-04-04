@@ -12,6 +12,10 @@ import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+
 
 /**
  * This class is used to maintain all excel specific common methods
@@ -92,6 +96,17 @@ public class ExcelLibrary {
 			map.put(df.formatCellValue(sheet.getRow(i).getCell(0)), df.formatCellValue(sheet.getRow(i).getCell(1)));
 		}
 		return map;
+	}
+	
+	
+	public void getList(String SheetName, WebDriver driver) throws Throwable {
+		Sheet sh=wb.getSheet(SheetName);
+		int count=sh.getLastRowNum();
+		for(int i=1;i<=count;i++) {
+			String key = sh.getRow(i).getCell(0).getStringCellValue();
+			String value = sh.getRow(i).getCell(1).getStringCellValue();
+			driver.findElement(By.name(key)).sendKeys(value);
+		}
 	}
 
 	

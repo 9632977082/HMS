@@ -10,11 +10,11 @@ import com.orgName.genericUtility.UtilityClass;
 public final class HomePage {
 	
 	// declare all the elements and specify the accesss specifier as private
-	@FindBy(linkText = "More")
-	private WebElement moreDropDown;
+	@FindBy(xpath="//a[@href=\"hms/user-login.php\"]")
+	private WebElement patientbtn;
 	
-	@FindBy(linkText = "Products")
-	private WebElement productsTab;
+	@FindBy(xpath="//a[@href=\"hms/admin\"]")
+	private WebElement adminbtn;
 	
 	@FindBy(linkText = "Organizations")
 	private WebElement organizationsTab;
@@ -22,8 +22,8 @@ public final class HomePage {
 	@FindBy(linkText = "Contacts")
 	private WebElement contactsTab;
 	
-	@FindBy(linkText = "Campaigns")
-	private WebElement campainsTab;
+	@FindBy(xpath="//a[@href=\"hms/doctor/\"]")
+	private WebElement doctorbtn;
 	
 	@FindBy(xpath = "//img[@src='themes/softed/images/user.PNG']")
 	private WebElement admistrorIcon;
@@ -31,8 +31,7 @@ public final class HomePage {
 	@FindBy(linkText  = "Sign Out")
 	private WebElement signOutLink;
 	
-	@FindBy(linkText  = "Documents")
-	private WebElement documentsLink;
+	
 	
 	
 	//intiallize the driver address to all the elements through constructors and make it as pubilc
@@ -45,19 +44,17 @@ public final class HomePage {
 	 * 
 	 * @param driver
 	 */
-	public void clickCampaign() {
-		UtilityClass.getSeleniumActions().mouseHoverOntheElement(moreDropDown);
-		campainsTab.click();
+	public void clickpatientbtn() {
+		
+		patientbtn.click();
 	}
 	
 	
-	public void clickContacts() {
-		contactsTab.click();
+	public void clickAdminbtn() {
+		adminbtn.click();
 	}
 	
-	public WebElement getMoreDropDown() {
-		return moreDropDown;
-	}
+	
 	
 	public WebElement getContacts() {
 		return contactsTab;
@@ -66,13 +63,11 @@ public final class HomePage {
 		organizationsTab.click();
 	}
 	
-	public void clickDocument() {
-		documentsLink.click();
+	public void clickOnDoctorbtn() {
+		doctorbtn.click();
 	}
 	
-	public void clickProduct() {
-		productsTab.click();
-	}
+	
 	public void signout() {
 		UtilityClass.getSeleniumActions().mouseHoverOntheElement(admistrorIcon);
 		signOutLink.click();
