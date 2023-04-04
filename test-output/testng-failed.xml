@@ -3,19 +3,19 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="TC_03.TC_03">
+      <class name="TC_06.TC_06">
         <methods>
           <include name="AS"/>
           <include name="BT"/>
           <include name="AC"/>
+          <include name="TC06"/>
           <include name="AM"/>
           <include name="BM"/>
-          <include name="Tc_03"/>
           <include name="BS"/>
           <include name="BC"/>
           <include name="AT"/>
         </methods>
-      </class> <!-- TC_03.TC_03 -->
+      </class> <!-- TC_06.TC_06 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
