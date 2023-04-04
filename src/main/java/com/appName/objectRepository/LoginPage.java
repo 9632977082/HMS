@@ -8,17 +8,18 @@ import com.orgName.genericUtility.UtilityClass;
 
 public final class LoginPage {
 
+	@FindBy(name = "username") 
+	private WebElement USNTxtBx;
 	
-	@FindBy(name = "user_name")
-	private  WebElement userNameTxt;
+	@FindBy(name = "password")
+	private WebElement PWDTxtBx;
 	
-	@FindBy(name="user_password" )
-	private   WebElement passwordTxt;
-	
-	@FindBy(id = "submitButton" )
-	private  WebElement loginBtn;
+	@FindBy(name = "submit")
+	private WebElement LoginBtn;
 		
-	
+	@FindBy(xpath ="//h3[text()='Patients']/parent::div//a")
+	private WebElement patientClickBtn;
+
 
 	public LoginPage() {
 		PageFactory.initElements(UtilityClass.getDriver(), this);
@@ -27,9 +28,10 @@ public final class LoginPage {
 
 //business library	
 	public  void loginAction(String userName, String password) {
-		userNameTxt.sendKeys(userName);
-		passwordTxt.sendKeys(password);
-		loginBtn.click();
+		patientClickBtn.click();
+		USNTxtBx.sendKeys(userName);
+		PWDTxtBx.sendKeys(password);
+		LoginBtn.click();
 		UtilityClass.getTest().info("Login Successfully with credentials");
 	}
 }

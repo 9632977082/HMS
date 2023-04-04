@@ -30,7 +30,6 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public final class SeleniumActions {
 	private WebDriverWait wait;
 	private Actions act;
-	private WebDriver driver;
 	private Select select;
 	private JavascriptExecutor js;
 
@@ -70,7 +69,6 @@ public final class SeleniumActions {
 			UtilityClass.setDriver(new ChromeDriver(options));
 			break;
 		}
-		driver=UtilityClass.getDriver();
 	}
 
 	/**
@@ -78,7 +76,7 @@ public final class SeleniumActions {
 	 * @param url
 	 */
 	public  void navigateApp(String url) {
-		driver.get(url);
+		UtilityClass.getDriver().get(url);
 		UtilityClass.getTest().info("Application Navigated SuccessFully");
 	}
 
@@ -88,7 +86,7 @@ public final class SeleniumActions {
 	 * @return
 	 */
 	public  String getTitle() {
-		String title = driver.getTitle();
+		String title = UtilityClass.getDriver().getTitle();
 		UtilityClass.getTest().info("Title of the WebPage SuccessFully");
 		return title;
 	}
@@ -100,7 +98,7 @@ public final class SeleniumActions {
 	 * 
 	 */
 	public void maximizeBrowser() {
-		driver.manage().window().maximize();
+		UtilityClass.getDriver().manage().window().maximize();
 		UtilityClass.getTest().info("Browser Maximized Successfully");
 	}
 
@@ -109,7 +107,7 @@ public final class SeleniumActions {
 	 * @param longTimeOut
 	 */
 	public  void waitTillPageLoad(long longTimeOut) {
-		driver.manage().timeouts().implicitlyWait(longTimeOut, TimeUnit.SECONDS);
+		UtilityClass.getDriver().manage().timeouts().implicitlyWait(longTimeOut, TimeUnit.SECONDS);
 		UtilityClass.getTest().info("Implicit wait Applied");
 	}
 
@@ -154,7 +152,7 @@ public final class SeleniumActions {
 	 * @param driver
 	 */
 	public void quitBrowser() {
-		driver.quit();
+		UtilityClass.getDriver().quit();
 		UtilityClass.getTest().info("Browser Closed Succefully");
 	}
 
@@ -187,7 +185,7 @@ public final class SeleniumActions {
 	 * @param timeOut
 	 */
 	public  void explicitlyWait(long timeOut) {
-		wait=new WebDriverWait(driver, timeOut);
+		wait=new WebDriverWait(UtilityClass.getDriver(), timeOut);
 		UtilityClass.getTest().info("Explicit wait is intiallized");
 	}
 
@@ -197,11 +195,11 @@ public final class SeleniumActions {
 	 * @param partialText
 	 */
 	public  void switchToWindowBasedOnTitle(String partialText) {
-		Set<String> sessionIDs = driver.getWindowHandles();
+		Set<String> sessionIDs = UtilityClass.getDriver().getWindowHandles();
 		for(String id:sessionIDs)
 		{
-			driver.switchTo().window(id);
-			if(driver.getTitle().contains(partialText))
+			UtilityClass.getDriver().switchTo().window(id);
+			if(UtilityClass.getDriver().getTitle().contains(partialText))
 			{
 				UtilityClass.getTest().info("Window Switched Successfully Based on title");
 				break;
@@ -249,7 +247,7 @@ public final class SeleniumActions {
 	 * @param index
 	 */
 	public  void swithToFrame( int index) {
-		driver.switchTo().frame(index);
+		UtilityClass.getDriver().switchTo().frame(index);
 		UtilityClass.getTest().info("Frame Switched Successfully based on the index");
 	}
 
@@ -259,7 +257,7 @@ public final class SeleniumActions {
 	 * @param nameOrId
 	 */
 	public void swithToFrame( String nameOrId) {
-		driver.switchTo().frame(nameOrId);
+		UtilityClass.getDriver().switchTo().frame(nameOrId);
 		UtilityClass.getTest().info("Frame Switched Successfully based on the name/id");
 	}
 
@@ -269,7 +267,7 @@ public final class SeleniumActions {
 	 * @param element
 	 */
 	public  void swithToFrame(WebElement element) {
-		driver.switchTo().frame(element);
+		UtilityClass.getDriver().switchTo().frame(element);
 		UtilityClass.getTest().info("Frame Switched Successfully based on the element address");
 	}
 
@@ -278,7 +276,7 @@ public final class SeleniumActions {
 	 * @param driver
 	 */
 	public void swithBackToHomeWebPage() {
-		driver.switchTo().defaultContent();
+		UtilityClass.getDriver().switchTo().defaultContent();
 		UtilityClass.getTest().info("Frame Switch back to the parent web page Successfully");
 	}
 
@@ -287,7 +285,7 @@ public final class SeleniumActions {
 	 * @param driver
 	 */
 	public void intiallizeJs() {
-		js=(JavascriptExecutor) driver;
+		js=(JavascriptExecutor) UtilityClass.getDriver();
 		UtilityClass.getTest().info("Java Script Executor Intiallization successfully");
 	}
 
@@ -354,7 +352,7 @@ public final class SeleniumActions {
 	 * @throws IOException
 	 */
 	public String takeScreenShot(String fileName, JavaLibrary jutil) throws IOException {
-		TakesScreenshot ts=(TakesScreenshot)driver;
+		TakesScreenshot ts=(TakesScreenshot)UtilityClass.getDriver();
 		File src = ts.getScreenshotAs(OutputType.FILE);
 		File dst=new File("./screenshot/"+fileName+"_"+jutil.getDateTimeInFormat()+".png");
 		FileUtils.copyFile(src, dst);
@@ -367,7 +365,7 @@ public final class SeleniumActions {
 	 * @param driver
 	 */
 	public void alertAccept() {
-		driver.switchTo().alert().accept();
+		UtilityClass.getDriver().switchTo().alert().accept();
 		UtilityClass.getTest().info("Accept the Alert Popup Successfully");
 	}
 
@@ -376,7 +374,7 @@ public final class SeleniumActions {
 	 * @param driver
 	 */
 	public void alertDismiss() {
-		driver.switchTo().alert().dismiss();
+		UtilityClass.getDriver().switchTo().alert().dismiss();
 		UtilityClass.getTest().info("Dismiss the Alert Popup Successfully");
 	}
 
@@ -385,7 +383,7 @@ public final class SeleniumActions {
 	 * @param driver
 	 */
 	public void alertsendData(String data) {
-		driver.switchTo().alert().sendKeys(data);
+		UtilityClass.getDriver().switchTo().alert().sendKeys(data);
 		UtilityClass.getTest().info("Send the Data to the Alert Popup Successfully");
 	}
 
@@ -394,7 +392,7 @@ public final class SeleniumActions {
 	 * @param driver
 	 */
 	public String getalertText() {
-		String data = driver.switchTo().alert().getText();
+		String data = UtilityClass.getDriver().switchTo().alert().getText();
 		UtilityClass.getTest().info("Fetch the Data from the Alert Popup Successfully");
 		return data;
 	}

@@ -12,7 +12,8 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 
-import com.appName.objectRepository.HomePage;
+
+import com.appName.objectRepository.HomePageOfPatient;
 import com.appName.objectRepository.LoginPage;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
@@ -30,7 +31,7 @@ public class MainClass {
 	private static String username;
 	private static String password;
 	protected LoginPage loginPage;
-	protected HomePage homePage;
+	protected HomePageOfPatient homePage;
 	private ExtentReports report;
 	private ExtentTest test;
 	
@@ -47,7 +48,7 @@ public class MainClass {
 		report.attachReporter(spark);
 		
 		report.setSystemInfo("Envirnoment", "Testing Envirnoment");
-		report.setSystemInfo("Reporter Name", "MOHAN GOWDA");
+		report.setSystemInfo("Reporter Name", "MEGHA");
 		report.setSystemInfo("Platform", "Windows 10");
 		report.setSystemInfo("Unit testing tool", "TESTNG");
 		report.setSystemInfo("Build Management Tool", "Maven");
@@ -79,8 +80,8 @@ public class MainClass {
 		ExcelLibrary.openExcel(FilePath.EXCELFILEPATH);
 		//read the data from propery file
 		Map<String, String> commonData = UtilityClass.getExcelLibrary().getCommonData();
-		String url = commonData.get("url");
-		String timeout = commonData.get("timeout");
+		String url = commonData.get("url1");
+		String timeout = commonData.get("timeouts");
 		username = commonData.get("userName");
 		password = commonData.get("password");
 		String browser = commonData.get("browser");
@@ -90,15 +91,15 @@ public class MainClass {
 
 		//navigate to the application
 		SeleniumActions.navigateApp(url);
-		//browser settings(maximize, implicit wait, action class initialization, explicit wait instance initialization)
+//		browser settings(maximize, implicit wait, action class initialization, explicit wait instance initialization)
 		SeleniumActions.maximizeBrowser();
 		SeleniumActions.waitTillPageLoad(UtilityClass.getTimeout());
 		SeleniumActions.intiallizeActions(UtilityClass.getDriver());
 		SeleniumActions.explicitlyWait(UtilityClass.getTimeout());
-
+SeleniumActions.intiallizeJs();
 		//create the instance for common object repository class
 		loginPage = new LoginPage();
-		homePage = new HomePage();
+		homePage = new HomePageOfPatient(UtilityClass.getDriver());
 
 	}
 
@@ -108,7 +109,7 @@ public class MainClass {
 	 * In this annotation we will do login action
 	 * @throws IOException 
 	 */
-	@BeforeMethod(groups = "baseclass")
+	@BeforeMethod(groups = "baseclass",enabled = false)
 	public void beforeMethod1Test(Method mtd) {
 		 test = report.createTest(mtd.getName());
 		 UtilityClass.setTest(test);
@@ -144,8 +145,8 @@ public class MainClass {
      		test.log(Status.SKIP, result.getThrowable());
      	}
 		//signout action
-		homePage.signout();
-		UtilityClass.getExcelLibrary().saveExcelData(FilePath.EXCELFILEPATH);
+		//homePage.signout();
+		//UtilityClass.getExcelLibrary().saveExcelData(FilePath.EXCELFILEPATH);
 
 
 	}
