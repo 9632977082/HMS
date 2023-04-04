@@ -97,8 +97,8 @@ public class MainClass {
 		SeleniumActions.explicitlyWait(UtilityClass.getTimeout());
 
 		//create the instance for common object repository class
-		loginPage = new LoginPage();
-		homePage = new HomePage();
+//		loginPage = new LoginPage();
+//		homePage = new HomePage();
 
 	}
 
@@ -113,7 +113,7 @@ public class MainClass {
 		 test = report.createTest(mtd.getName());
 		 UtilityClass.setTest(test);
 		//open database if it is required
-		loginPage.loginAction(username, password);
+//		loginPage.loginAction(username, password);
 	}
 
 	/**
@@ -144,7 +144,7 @@ public class MainClass {
      		test.log(Status.SKIP, result.getThrowable());
      	}
 		//signout action
-		homePage.signout();
+//		homePage.signout();
 		UtilityClass.getExcelLibrary().saveExcelData(FilePath.EXCELFILEPATH);
 
 

@@ -51,7 +51,6 @@ public class UtilityClass {
 		SeleniumActionsTL.set(SeleniumActions);
 	}
 
-
 	public static void setTest(ExtentTest test) {
 		testTL.set(test);
 	}
