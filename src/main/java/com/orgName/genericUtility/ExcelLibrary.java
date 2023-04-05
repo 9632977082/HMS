@@ -123,8 +123,8 @@ public class ExcelLibrary {
 	 * @param cellNumber
 	 * @param value
 	 */
-	public   void setDataIntoExcel(String sheetName, int rowNumber, int cellNumber, String value) {
-		wb.getSheet(sheetName).getRow(rowNumber).createCell(cellNumber).setCellValue(value);
+	public void setDataIntoExcel(String sheetName, int rowNumber, int cellNumber, String value) {
+		wb.getSheet(sheetName).createRow(rowNumber).createCell(cellNumber).setCellValue(value);
 		UtilityClass.getTest().info("Data SuccessFully set to the Excel");
 	}
 

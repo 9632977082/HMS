@@ -20,13 +20,13 @@ public class AdminDashBoardPage {
 	@FindBy(xpath = "//a[contains(text(),'Total Patients')]")
 	private WebElement managePatientsButton;
 	
-	@FindBy(xpath = "//span[text()=' Doctors ']")
+	@FindBy(xpath = "//div/span[text()=' Doctors ']")
 	private WebElement doctorsButton;
 	
 	@FindBy(xpath = "//span[text()=' Add Doctor']")
 	private WebElement addDoctorButton;
 	
-	@FindBy()
+	@FindBy(xpath="//a/span[text()=' Manage Doctors ']")
 	private WebElement manageDoctorsButton;
 	
 	public void getManageDoctorsButton()

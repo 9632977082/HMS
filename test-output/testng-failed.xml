@@ -3,17 +3,17 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="scripts.AddDoctorAndLoginWithNewDoctorDetailsTest">
+      <class name="scripts.FetchingDoctorsDetailsFromAdminModuleTest">
         <methods>
+          <include name="adminModule"/>
           <include name="aftersuite1Test"/>
           <include name="testSetUp"/>
           <include name="afterCass1Test"/>
-          <include name="adminModule"/>
           <include name="afterMethod1Test"/>
           <include name="beforeClass1Test"/>
           <include name="beforeMethod1Test"/>
         </methods>
-      </class> <!-- scripts.AddDoctorAndLoginWithNewDoctorDetailsTest -->
+      </class> <!-- scripts.FetchingDoctorsDetailsFromAdminModuleTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
