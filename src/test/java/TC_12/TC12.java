@@ -1,16 +1,9 @@
-package TC_01;
+package TC_12;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 
 import com.appName.objectRepository.AdminLogin;
@@ -23,10 +16,10 @@ import com.orgName.genericUtility.BaseClass;
 import com.orgName.genericUtility.File_utility;
 import com.orgName.genericUtility.WebdriverUtility;
 
-public class TC_01 extends BaseClass
+public class TC12 extends BaseClass
 {
 	@Test
-	public void Tc_01() throws IOException, InterruptedException 
+	public void TC12() throws IOException, InterruptedException
 	{
 		WebDriver driver=this.driver;
 
@@ -40,24 +33,18 @@ public class TC_01 extends BaseClass
 		String USER = file.Admin("user");
 		String PWD = file.Admin("pwd");
 		
-		
-
-	//	System.setProperty("webdriver.chrome.driver", "./src/test/resources/chromedriver.exe");
-	//	WebDriver	driver=new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get(URl);
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		HomePage home = new HomePage(driver);
 		home.PatientModule();
-
-
+		
 		LoginPage login = new LoginPage(driver);
 		login.Log_in(UN, PW);
-
-
+		
 		User_page user = new User_page(driver);
 		user.toClickOnMyProfile();
-
+		
 		WebdriverUtility web = new WebdriverUtility();
 		web.JavaScriptExecutorToScrollDown(driver);
 
@@ -65,22 +52,15 @@ public class TC_01 extends BaseClass
 		String data = "udupi";
 		EditPatientInformationPage edit = new EditPatientInformationPage(driver);
 		edit.EditPageInformation(data);
-
+		
 		user.Logout();
 		home.AdminModule();
-
-		AdminLogin admin = new AdminLogin(driver);
-		admin.Adminlogin(USER, PWD);
-
-		Admin_page admin1 = new Admin_page(driver);
-		admin1.ClickOnUserIconandManageUserIcon();
-
-         admin1.AdminLogout();
-        
-         driver.close();
-         
+		AdminLogin login1 = new AdminLogin(driver);
+		login1.Adminlogin(USER, PWD);
 		
-
+		Admin_page admin = new Admin_page(driver);
+		admin.Appointment();
 	}
+	
 
 }

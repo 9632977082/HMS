@@ -21,11 +21,25 @@ public class Admin_page
 	private  WebElement Doctors;
 	@FindBy(xpath = "//ul[@class='sub-menu']/li[2]/a/span[.=' Add Doctor']")
 	private  WebElement addDoctor;
+	@FindBy(xpath = "//ul[@class='main-navigation-menu']/li[5]")
+	private   WebElement BookAnAppointment; 
+	@FindBy(xpath = "//ul[@class='sub-menu']/li[3]" )
+	private   WebElement manageDoc;
+
+
+	public WebElement getManageDoc() {
+		return manageDoc;
+	}
+
+
+
 
 	public WebDriver getDriver() 
 	{
 		return driver;
 	}
+
+
 
 
 	public WebElement getDoctors() {
@@ -65,6 +79,11 @@ public class Admin_page
 	{
 		return Manage_user;
 	}
+	public WebElement getBookAnAppointment() 
+	{
+		return BookAnAppointment;
+	}
+
 
 	public void ClickOnUserIconandManageUserIcon()
 	{
@@ -81,5 +100,13 @@ public class Admin_page
 		Doctors.click();
 		addDoctor.click();
 	}
-
+	public void Appointment()
+	{
+          BookAnAppointment.click();
+	}
+	public void toClickOnManageDoctor()
+	{
+		Doctors.click();
+		manageDoc.click();
+	}
 }
