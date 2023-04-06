@@ -16,12 +16,14 @@ public class DoctorPage
 	private  WebElement  TestDrop;
 	@FindBy(xpath = "//ul[@class='dropdown-menu dropdown-dark']/li[3]/a")
 	private   WebElement Doc_logout;
+	@FindBy(xpath = "//ul[@class='dropdown-menu dropdown-dark']/li[2]/a")
+	private  WebElement Doc_2Logout;
+	@FindBy(xpath = "//h2[.='My Appointments']/../descendant::p/a")
+	private  WebElement BookAppointments;
 
 	public WebDriver getDriver() {
 		return driver;
 	}
-
-	
 
 	public  DoctorPage(WebDriver driver)
 	{
@@ -53,9 +55,30 @@ public class DoctorPage
 		Myprofile.click();
 		submit.click();
 	}
-   public void logout()
-   {
-	   TestDrop.click();
-	   Doc_logout.click();
-   }
+	public void logout()
+	{
+		TestDrop.click();
+		Doc_logout.click();
+	}
+
+	public WebElement getBookAppointments() 
+	{
+		return BookAppointments;
+	}
+
+	public WebElement getDoc_2Logout() 
+	{
+		return Doc_2Logout;
+	}
+
+	public void Logout2()
+	{
+		TestDrop.click();
+		Doc_2Logout.click();
+	}
+	public void BookAppointMents()
+	{
+           BookAppointments.click();
+	}
+
 }

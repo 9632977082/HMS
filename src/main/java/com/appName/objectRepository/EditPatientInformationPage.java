@@ -32,6 +32,7 @@ public class EditPatientInformationPage
 	
 	public void EditPageInformation(String data)
 	{
+		Location.clear();
 		Location.sendKeys(data);
 		Submit.click();
 	}

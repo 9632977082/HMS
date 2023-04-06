@@ -19,12 +19,15 @@ public class User_page
 	private WebElement  LogOut_patient;
 	@FindBy(xpath = "//div[@class='container-fluid container-fullw bg-white']/descendant::div/div[3]/descendant::p")
 	private  WebElement AppointMent;
-
+	@FindBy(xpath = "//ul[@class='main-navigation-menu']/li[5]")
+	private    WebElement appointmentHistory;
 
 	public WebElement getLogOut_patient() 
 	{
 		return LogOut_patient;
 	}
+
+	
 
 	public WebElement getAppointMent() 
 	{
@@ -52,6 +55,11 @@ public class User_page
 	{
 		return MyProfile;
 	}
+	public WebElement getAppointmentHistory() 
+	{
+		return appointmentHistory;
+	}
+	
 
 	public void toClickOnMyProfile()
 	{
@@ -67,5 +75,8 @@ public class User_page
 	{
 		AppointMent.click();
 	}
-
+    public void AppointHistory()
+    {
+    	appointmentHistory.click();
+    }
 }
