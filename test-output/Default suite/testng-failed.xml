@@ -3,19 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="TC_15.TC15">
+      <class name="Practice.ToHandleMouseOverAction">
         <methods>
-          <include name="AS"/>
-          <include name="BT"/>
-          <include name="AC"/>
-          <include name="AM"/>
-          <include name="TC_15"/>
-          <include name="BM"/>
-          <include name="BS"/>
-          <include name="BC"/>
-          <include name="AT"/>
+          <include name="ToHandleMouse"/>
         </methods>
-      </class> <!-- TC_15.TC15 -->
+      </class> <!-- Practice.ToHandleMouseOverAction -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

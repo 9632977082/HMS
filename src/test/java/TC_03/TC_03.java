@@ -21,12 +21,13 @@ import com.orgName.genericUtility.WebdriverUtility;
 
 public class TC_03 extends BaseClass
 {
-	@Test
+	@Test(groups={"smokeTest"})
 	public void Tc_03() throws IOException
 	{
+		WebDriver driver=this.driver;
 		WebdriverUtility wlib = new WebdriverUtility();
 		Java_lib jlib = new Java_lib();
-		WebDriver driver=this.driver;
+		
 		File_utility file = new File_utility();
 		String URl = file.Patient("url");
 		String UN = file.Patient("un");
