@@ -11,6 +11,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.appName.objectRepository.AdminLogin;
@@ -25,7 +26,7 @@ import com.orgName.genericUtility.WebdriverUtility;
 
 public class TC_01 extends BaseClass
 {
-	@Test
+	@Test(groups = {"RegressionTest"})
 	public void Tc_01() throws IOException, InterruptedException 
 	{
 		WebDriver driver=this.driver;
@@ -82,5 +83,8 @@ public class TC_01 extends BaseClass
 		
 
 	}
+
+	
+	
 
 }

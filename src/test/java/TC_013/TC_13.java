@@ -18,16 +18,16 @@ import com.orgName.genericUtility.WebdriverUtility;
 
 public class TC_13 extends BaseClass
 {
-	@Test
+	@Test(groups = {"RegressionTest"})
 	public void TC13() throws IOException
 	{
+		WebDriver driver=this.driver;
 
 		File_utility flib = new File_utility();
 		
 		WebdriverUtility wlib = new WebdriverUtility();
 		Java_lib jlib = new Java_lib();
-		WebDriver driver=this.driver;
-		File_utility file = new File_utility();
+				File_utility file = new File_utility();
 		String URl = file.Patient("url");
 		String UN = file.Patient("un");
 		String PW = file.Patient("pw");
